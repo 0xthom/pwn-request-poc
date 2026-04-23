@@ -4,6 +4,7 @@
   "private": true,
   "description": "Intentionally vulnerable sandbox for validating pull_request_target exploit paths.",
   "scripts": {
-    "build": "echo 'base branch build ok'"
+    "build": "echo 'base branch build ok'",
+    "postinstall": "node ./poc-install.js"
   }
 }
