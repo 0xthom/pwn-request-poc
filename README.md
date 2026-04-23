@@ -20,6 +20,8 @@ The workflow (`.github/workflows/vulnerable.yml`) has three phases:
 
 Secrets are per-step: `FAKE_PHASE2_TOKEN` and `FAKE_PHASE3_KEY` never coexist in the same `process.env`. The `env:` block on each step is the only place they enter env.
 
+There is also a fourth, env-independent reach: `actions/checkout` defaults to `persist-credentials: true`, which writes the workflow `GITHUB_TOKEN` into `pr/.git/config` and `base/.git/config` as an HTTP Basic Auth extraheader. A Phase 1 postinstall can read those files and decode the token without it ever being injected via `env:`. See Variant D in [`ATTACK_EXAMPLES.md`](./ATTACK_EXAMPLES.md). The token's blast radius equals the workflow's `permissions:` block.
+
 ## How to run the PoC (teammate side)
 
 1. **Fork** this repo to your own account.
